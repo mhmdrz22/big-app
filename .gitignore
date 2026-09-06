@@ -1,0 +1,113 @@
+# ─── Python ───
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# ─── Virtual environments ───
+venv/
+env/
+ENV/
+.venv/
+pip-wheel-metadata/
+
+# ─── Testing / Coverage ───
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+.pytest_cache/
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pyre/
+
+# ─── Jupyter ───
+.ipynb_checkpoints/
+
+# ─── IDEs ───
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.project
+.pydevproject
+.settings/
+
+# ─── OS ───
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ─── Environment / Secrets ───
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+*.crt
+*.p12
+
+# ─── Logs ───
+*.log
+logs/
+*.out
+
+# ─── Database ───
+*.db
+*.sqlite3
+*.sqlite
+*.db-journal
+*.db-wal
+*.db-shm
+instance/
+
+# ─── Model artifacts (large) ───
+model/*.joblib
+model/*.bin
+model/*.pt
+model/*.pth
+model/*.h5
+model/persian/*.joblib
+model/retraining_runs/
+
+# ─── Data (keep small samples, ignore large) ───
+data/*.csv
+!data/README.txt
+!data/sample-*.csv
+
+# ─── Docker ───
+docker-compose.override.yml
+
+# ─── Temp ───
+tmp/
+temp/
+*.tmp
+*.bak
+
+# ─── Archive ───
+*.zip
+*.tar.gz
+*.rar
+*.7z

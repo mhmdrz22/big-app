@@ -1,0 +1,37 @@
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: stress_sentinel
+      POSTGRES_USER: stress_sentinel
+      POSTGRES_PASSWORD: stress_sentinel
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  api:
+    build: .
+    depends_on:
+      - postgres
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./model:/app/model
+      - ./data:/app/data
+
+  worker:
+    build: .
+    depends_on:
+      - postgres
+    env_file:
+      - .env
+    command: ["python3", "-m", "stressguard.worker"]
+    volumes:
+      - ./model:/app/model
+      - ./data:/app/data
+
+volumes:
+  postgres_data:
