@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %}پنل مدیریت | آرام‌نگار{% endblock %}
+{% block content %}
+<div class="admin-body">
+
+  <!-- ===== Login screen ===== -->
+  <section id="loginView" class="login-wrap">
+    <form id="adminLoginForm" class="login-card">
+      <div class="brand" style="margin-bottom:16px"><span class="brand-dot">آ</span> آرام‌نگار</div>
+      <h1>ورود به پنل مدیریت</h1>
+      <p>دسترسی بر اساس نقش کاربری (RBAC) کنترل می‌شود.</p>
+      <input id="adminEmail" type="email" placeholder="admin@example.com" autocomplete="username" dir="ltr" required>
+      <input id="adminPassword" type="password" placeholder="گذرواژه" autocomplete="current-password" required>
+      <button class="btn btn-primary" type="submit">ورود</button>
+      <div id="loginError" class="login-error"></div>
+      <div class="login-hint">حساب محلی پیش‌فرض: <span dir="ltr">admin@example.com</span> — اگر ورود موفق نبود، در پوشه پروژه فایل <b>reset-admin.bat</b> را اجرا کن.</div>
+    </form>
+  </section>
+
+  <!-- ===== Dashboard ===== -->
+  <div id="dashboardView" class="dash hidden">
+    <div class="admin-tabs">
+      <button class="tab-btn active" data-tab="executive">نمایش مدیران</button>
+      <button class="tab-btn" data-tab="technical">نمایش فنی</button>
+    </div>
+
+    <div id="tab-executive" class="tab-pane active">
+      <div class="kpi-grid" id="kpiGrid"></div>
+      <div class="chart-row">
+        <div class="chart-card"><h3>روند ارزیابی‌ها</h3><canvas id="assessmentChart"></canvas></div>
+        <div class="chart-card"><h3>توزیع بازخورد</h3><canvas id="feedbackChart"></canvas></div>
+      </div>
+      <div class="panel">
+        <h3>صف بازخورد</h3>
+        <div id="feedbackQueue"></div>
+      </div>
+      <div class="panel">
+        <h3>عامل‌های هوشمند</h3>
+        <div id="agentList" class="agent-grid"></div>
+      </div>
+    </div>
+
+    <div id="tab-technical" class="tab-pane">
+      <div class="tech-grid">
+        <div class="tech-card"><h3>Confusion Matrix</h3><canvas id="confusionMatrixChart"></canvas></div>
+        <div class="tech-card"><h3>Drift Monitor</h3><canvas id="driftChart"></canvas></div>
+        <div class="tech-card"><h3>Feedback Weights</h3><canvas id="weightChart"></canvas></div>
+        <div class="tech-card"><h3>Model Registry</h3><div id="modelRegistryList"></div></div>
+      </div>
+      <div class="panel" style="margin-top:16px">
+        <h3>اجراهای بازآموزی</h3>
+        <div id="retrainingRuns"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="{{ request.url_for('static', path='chart.min.js') }}"></script>
+<script src="{{ request.url_for('static', path='admin.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block title %}آرام‌نگار | یک لحظه برای خودت{% endblock %}
+{% block content %}
+<main class="calm-shell">
+
+  <header class="calm-topbar">
+    <div class="brand"><span class="brand-dot">آ</span> آرام‌نگار</div>
+    <nav>
+      <a href="/admin" class="admin-link-btn">پنل مدیریت</a>
+    </nav>
+  </header>
+
+  <section class="calm-hero">
+    <span class="calm-eyebrow">یک مکان امن برای نوشتن</span>
+    <h1>بنویس چه در ذهنت می‌گذرد.<br>ما به تو می‌گوییم نشانه‌های فشار روانی در متنت دیده می‌شود یا نه.</h1>
+    <p class="calm-sub">این یک ابزار حمایتی است، نه تشخیص پزشکی. متنت ذخیره نمی‌شود مگر خودت بخواهی.</p>
+  </section>
+
+  <section class="calm-card">
+    <textarea id="userText" class="calm-textarea" dir="auto"
+      placeholder="هر چه الان در ذهنت است اینجا بنویس... می‌توانی درباره خواب، نگرانی، فشار کار یا هر چیز دیگری بنویسی. (مدل فعلی بهترین کارکرد را با متن انگلیسی دارد)"></textarea>
+    <div class="calm-actions">
+      <button id="analyzeBtn" class="btn-calm">تحلیل آرام</button>
+      <span class="calm-note">حداقل ۱۵ کاراکتر</span>
+    </div>
+
+    <div id="resultPanel" class="calm-result hidden">
+      <div class="verdict-banner" id="verdictBanner">
+        <div class="gauge-wrap calm-gauge-wrap">
+          <div class="gauge calm-gauge" id="gauge"><span id="gaugeScore">۰</span><small>٪</small></div>
+          <div>
+            <h2 id="resultLabel">—</h2>
+            <p id="resultScore" class="calm-score">—</p>
+            <p id="resultProbability" class="calm-prob">—</p>
+          </div>
+        </div>
+        <ul id="recommendations" class="calm-recs"></ul>
+        <p class="calm-disclaimer" id="disclaimerText">این خروجی تشخیص پزشکی نیست.</p>
+        <div id="urgentBox" class="calm-urgent hidden"></div>
+      </div>
+
+      <div class="calm-feedback" id="feedbackPanel">
+        <p class="calm-fb-q">کجای نتیجه با حال واقعی‌ات یکی بود؟</p>
+        <p class="calm-fb-hint">مدل فقط یک احتمال ارائه می‌دهد — جهتِ اختلاف، نه عدد دقیق، کافیست.</p>
+        <div class="calm-fb-row calm-fb-row-3">
+          <button class="btn-fb btn-fb-low direction-btn" data-direction="over">استرس کمتر بود</button>
+          <button class="btn-fb btn-fb-yes direction-btn" data-direction="agree">حدوداً درست بود</button>
+          <button class="btn-fb btn-fb-high direction-btn" data-direction="under">استرس بیشتر بود</button>
+        </div>
+        <div class="calm-fb-secondary">
+          <button class="btn-fb-link" id="feedbackUnsure">مطمئن نیستم — فقط برای بازبینی ادمین</button>
+        </div>
+        <div id="feedbackResult" class="calm-fb-result hidden"></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="calm-footer">
+    <p>اگر در بحران هستی یا به خودت آسیب می‌رسانی، لطفاً همین حالا با خدمات اضطراری محل زندگی‌ات یا یک فرد مورد اعتماد تماس بگیر. تو تنها نیستی.</p>
+  </footer>
+</main>
+<script src="{{ request.url_for('static', path='app.js') }}"></script>
+{% endblock %}
